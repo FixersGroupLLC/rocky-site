@@ -1,76 +1,115 @@
 
 :root {
-  --ink: #1a1d21;
-  --mid: #5b6470;
-  --line: #e2e5ea;
-  --bg: #ffffff;
+  --ink: #1d1f1e;
+  --mid: #5d6660;
+  --line: #e4e2da;
+  --bg: #faf9f5;
+  --card: #ffffff;
   --accent: #1f5f4f;
+  --accent-dark: #17493d;
+  --accent-soft: #eaf2ef;
   --todo: #fff8e6;
   --todo-line: #e0b64a;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font: 17px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 17px/1.7 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--ink);
   background: var(--bg);
 }
+::selection { background: var(--accent); color: #fff; }
 header {
   display: flex; align-items: center; gap: 24px;
   padding: 16px 32px; border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; background: rgba(255,255,255,.94);
-  backdrop-filter: blur(6px); flex-wrap: wrap; z-index: 10;
+  position: sticky; top: 0; background: rgba(250,249,245,.92);
+  backdrop-filter: blur(8px); flex-wrap: wrap; z-index: 10;
 }
 .wordmark {
-  font-weight: 700; font-size: 20px; letter-spacing: -.02em;
+  font-family: var(--display);
+  font-weight: 700; font-size: 22px; letter-spacing: -.01em;
   color: var(--ink); text-decoration: none;
+}
+.wordmark::after {
+  content: ""; display: inline-block; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--accent);
+  margin-left: 3px; vertical-align: baseline;
 }
 header nav { display: flex; gap: 20px; flex-wrap: wrap; margin-right: auto; }
 header nav a {
   color: var(--mid); text-decoration: none; font-size: 15px;
+  padding: 2px 0; border-bottom: 2px solid transparent;
+  transition: color .15s;
 }
 header nav a:hover { color: var(--ink); }
-header nav a.here { color: var(--ink); font-weight: 600; }
+header nav a.here { color: var(--ink); font-weight: 600; border-bottom-color: var(--accent); }
 .navcta {
   background: var(--accent); color: #fff; text-decoration: none;
-  padding: 8px 16px; border-radius: 6px; font-size: 15px; font-weight: 500;
+  padding: 8px 18px; border-radius: 999px; font-size: 15px; font-weight: 500;
+  transition: background .15s;
 }
-main { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+.navcta:hover { background: var(--accent-dark); }
+main { max-width: 720px; margin: 0 auto; padding: 56px 24px 90px; }
+
+/* The page-label heading every page opens with becomes a small eyebrow,
+   and the rule right after it disappears — pure CSS, the HTML stays as is. */
+main > h1:first-child {
+  font: 600 13px/1.4 -apple-system, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 18px;
+}
+main > h1:first-child + hr { display: none; }
+
 h1 {
-  font-size: 40px; line-height: 1.15; letter-spacing: -.025em;
-  margin: 8px 0 24px;
+  font-family: var(--display);
+  font-size: 44px; font-weight: 600; line-height: 1.12;
+  letter-spacing: -.015em; margin: 8px 0 24px;
 }
 h2 {
-  font-size: 25px; line-height: 1.25; letter-spacing: -.015em;
-  margin: 52px 0 16px;
+  font-family: var(--display);
+  font-size: 27px; font-weight: 600; line-height: 1.25;
+  letter-spacing: -.005em; margin: 52px 0 16px;
 }
 h3 { font-size: 19px; margin: 32px 0 12px; }
 p { margin: 0 0 18px; }
-ul { margin: 0 0 20px; padding-left: 22px; }
-li { margin-bottom: 8px; }
-hr { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
+main a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+main a:hover { color: var(--accent-dark); }
+ul { margin: 0 0 20px; padding-left: 24px; }
+li { margin-bottom: 9px; }
+li::marker { color: var(--accent); }
+hr {
+  border: 0; border-top: 2px solid var(--line);
+  width: 64px; margin: 52px 0;
+}
 strong { font-weight: 650; }
+em { color: inherit; }
 .seealso { font-size: 15px; color: var(--mid); }
-.seealso a { color: var(--accent); }
-.btn-row { margin: 0 0 12px; }
+.seealso a { color: var(--accent); font-weight: 500; }
+.btn-row { margin: 0 0 14px; }
 .btn {
   display: inline-block; background: var(--accent); color: #fff;
-  text-decoration: none; padding: 12px 22px; border-radius: 6px;
-  font-weight: 550;
+  text-decoration: none; padding: 13px 26px; border-radius: 999px;
+  font-weight: 550; transition: background .15s, transform .1s;
+  box-shadow: 0 1px 3px rgba(23,73,61,.25);
 }
-.btn-caption { color: var(--mid); font-size: 15px; margin-left: 10px; }
+.btn:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
+.btn-caption { color: var(--mid); font-size: 15px; margin-left: 12px; }
 .todo {
   background: var(--todo); border-left: 3px solid var(--todo-line);
   padding: 12px 16px; margin: 20px 0; font-size: 15px; color: #6b5320;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 6px 6px 0;
 }
+.todo a { color: #6b5320; }
 .unfilled {
   background: var(--todo); border-bottom: 1px dashed var(--todo-line);
   padding: 0 3px; color: #8a6a1e; font-weight: 600;
 }
 .booking {
-  border: 1px solid var(--line); border-radius: 10px;
-  padding: 28px; margin: 24px 0;
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 30px; margin: 24px 0; background: var(--card);
+  box-shadow: 0 2px 10px rgba(29,31,30,.04);
 }
 .field { margin-bottom: 22px; }
 .field label { display: block; font-weight: 600; margin-bottom: 4px; }
@@ -78,21 +117,25 @@ strong { font-weight: 650; }
 .field .help { font-size: 15px; color: var(--mid); margin: 0 0 8px; }
 .field input, .field textarea {
   width: 100%; padding: 10px 12px; font: inherit; font-size: 16px;
-  border: 1px solid #c9cfd8; border-radius: 6px; background: #fff;
+  border: 1px solid #cbcfc6; border-radius: 8px; background: #fff;
 }
 .field input:focus, .field textarea:focus {
   outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent);
 }
+a:focus-visible, .btn:focus-visible, .navcta:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px;
+}
 .formnote { font-size: 14px; color: var(--mid); margin: 0; }
 footer {
-  border-top: 1px solid var(--line); padding: 28px 24px 60px;
+  border-top: 1px solid var(--line); padding: 30px 24px 64px;
   text-align: center; color: var(--mid); font-size: 14px;
 }
 footer a { color: var(--mid); }
-.draft { font-size: 13px; opacity: .75; max-width: 520px; margin: 8px auto 0; }
+.draft { font-size: 13px; opacity: .7; max-width: 520px; margin: 8px auto 0; }
 @media (max-width: 640px) {
-  h1 { font-size: 31px; }
-  h2 { font-size: 22px; }
+  h1 { font-size: 33px; }
+  h2 { font-size: 24px; }
   header { padding: 12px 18px; gap: 14px; }
-  main { padding: 32px 20px 60px; }
+  main { padding: 36px 20px 64px; }
+  hr { margin: 44px 0; }
 }
