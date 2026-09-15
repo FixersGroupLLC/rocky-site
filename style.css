@@ -1,4 +1,4 @@
-/* Rocky — site styles.
+/* Chuck — site styles.
    Plain static CSS. One webfont (Fraunces, for display type only); everything
    else rides the system UI stack so body copy renders natively on any machine.
    No frameworks, no build step, no CDN beyond the font. */
